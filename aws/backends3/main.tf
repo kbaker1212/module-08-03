@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "terraform_state" {
 
 resource "aws_s3_bucket_versioning" "terraform_state_versioning" {
   bucket = aws_s3_bucket.terraform_state.bucket
-
+depends_on = [aws_s3_bucket.terraform_state]
   versioning_configuration {
     status = "Enabled"
   }
